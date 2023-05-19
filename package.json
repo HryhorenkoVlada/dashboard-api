@@ -1,0 +1,23 @@
+{
+  "name": "dashboard-api",
+  "version": "1.0.0",
+  "description": "API for the educational project",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node ./dist/main.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vlada Hryhorenko",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13",
+    "tslog": "^4.8.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17"
+  }
+}
