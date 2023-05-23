@@ -8,24 +8,21 @@ import { TYPES } from '../types';
 import { IUsersController } from './users.controller.interface';
 
 @injectable()
-export class UsersController
-  extends BaseController
-  implements IUsersController
-{
-  constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
-    super(loggerService);
-    this.bindRoutes([
-      { path: '/login', method: 'post', function: this.login },
-      { path: '/register', method: 'post', function: this.register },
-    ]);
-  }
+export class UsersController extends BaseController implements IUsersController {
+	constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
+		super(loggerService);
+		this.bindRoutes([
+			{ path: '/login', method: 'post', function: this.login },
+			{ path: '/register', method: 'post', function: this.register },
+		]);
+	}
 
-  login(req: Request, res: Response, next: NextFunction): void {
-    this.ok(res, 'Login');
-  }
+	login(req: Request, res: Response, next: NextFunction): void {
+		this.ok(res, 'Login');
+	}
 
-  register(req: Request, res: Response, next: NextFunction): void {
-    // this.ok(res, 'Register');
-    next(new HTTPError(400, 'Invalid email address', 'users.register'));
-  }
+	register(req: Request, res: Response, next: NextFunction): void {
+		// this.ok(res, 'Register');
+		next(new HTTPError(400, 'Invalid email address', 'users.register'));
+	}
 }
