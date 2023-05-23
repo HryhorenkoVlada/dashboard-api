@@ -6,6 +6,8 @@
 	"type": "commonjs",
 	"scripts": {
 		"start": "node ./dist/main.js",
+		"dev": "nodemon",
+		"dev:debug": "nodemon -e ts,json --exec node --inspect=localhost:9229 -r ts-node/register ./src/main.ts",
 		"build": "tsc",
 		"lint": "eslint ./src/**",
 		"lint:fix": "eslint ./src/** --fix",
@@ -26,7 +28,9 @@
 		"eslint": "^8.41.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
+		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.4"
 	}
 }
