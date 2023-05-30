@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express, Request, Response } from 'express';
 import { Server } from 'http';
 import { inject, injectable } from 'inversify';
 import bodyParser from 'body-parser';
@@ -11,6 +11,7 @@ import { IUsersController } from './users/users.controller.interface';
 import { UsersController } from './users/users.controller';
 import { IConfigService } from './config/config.service.interface';
 import { PrismaService } from './database/prisma.service';
+import { AuthMiddleware } from './common/auth.middleware';
 
 @injectable()
 export class App {
@@ -31,6 +32,8 @@ export class App {
 
 	useMiddlewares(): void {
 		this.app.use(bodyParser.json());
+		const authMiddleware = new AuthMiddleware(this.configService.get('JWT_SECRET'));
+		this.app.use(authMiddleware.execute.bind(authMiddleware));
 	}
 
 	useRoutes(): void {
